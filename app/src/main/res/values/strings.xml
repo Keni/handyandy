@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">HandyAndy</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="entry">Вход</string>
+</resources>
