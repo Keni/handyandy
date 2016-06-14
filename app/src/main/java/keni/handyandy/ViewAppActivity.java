@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +19,6 @@ import java.util.HashMap;
 
 public class ViewAppActivity extends AppCompatActivity implements View.OnClickListener
 {
-    private TextView textViewTitle;
     private TextView textViewCategory;
     private TextView textViewDescription;
     private TextView textViewClientName;
@@ -30,16 +30,18 @@ public class ViewAppActivity extends AppCompatActivity implements View.OnClickLi
 
     private Button buttonUpdateSelectApp;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_app);
+        initToolBar();
 
         Intent intent = getIntent();
         id = intent.getStringExtra(Config.APP_ID);
 
-        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         textViewCategory = (TextView) findViewById(R.id.textViewCategory);
         textViewDescription = (TextView) findViewById(R.id.textViewDescription);
         textViewClientName = (TextView) findViewById(R.id.textViewClientName);
@@ -93,7 +95,6 @@ public class ViewAppActivity extends AppCompatActivity implements View.OnClickLi
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
 
-            String title = c.getString(Config.TAG_APP_TITLE);
             String description = c.getString(Config.TAG_APP_DESCRIPTION);
             String category = c.getString(Config.TAG_APP_CATEGORY);
             String client_name = c.getString(Config.TAG_APP_CLIENTNAME);
@@ -101,7 +102,6 @@ public class ViewAppActivity extends AppCompatActivity implements View.OnClickLi
             String client_phone = c.getString(Config.TAG_APP_CLIENTPHONE);
             String date = c.getString(Config.TAG_APP_DATE);
 
-            textViewTitle.setText(title);
             textViewDescription.setText(description);
             textViewCategory.setText(category);
             textViewClientName.setText(client_name);
@@ -163,6 +163,25 @@ public class ViewAppActivity extends AppCompatActivity implements View.OnClickLi
         updateSelectApp();
         Intent back = new Intent(ViewAppActivity.this, AllAppsActivity.class);
         startActivity(back);
+    }
+
+    public void initToolBar()
+    {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app);
+
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_36dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                onBackPressed();
+            }
+        });
+
     }
 
 }

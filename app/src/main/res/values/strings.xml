@@ -8,5 +8,8 @@
     <string name="category">Вид работы</string>
     <string name="menu">Меню</string>
     <string name="myapps">Мои Заявки</string>
-    <string name="allapps">Не распредленные заявки</string>
+    <string name="allapps">Нераспредленные заявки</string>
+    <string name="cat">Категория</string>
+    <string name="auth">Авторизация</string>
+    <string name="app">Заявка</string>
 </resources>

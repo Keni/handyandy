@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,11 +34,14 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
 
     private Button buttonUpdateFinishApp;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_my_app);
+        initToolBar();
 
         Intent intent = getIntent();
         id = intent.getStringExtra(Config.APP_ID);
@@ -170,6 +174,25 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
         updateFinishApp();
         Intent back = new Intent(ViewMyAppActivity.this, MyAppsActivity.class);
         startActivity(back);
+    }
+
+    public void initToolBar()
+    {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app);
+
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_36dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                onBackPressed();
+            }
+        });
+
     }
 
 }
