@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="keni.handyandy.MyAppsActivity">
 
     <include layout="@layout/toolbar" />
 
     <ListView
-        android:id="@+id/list_apps"
+        android:id="@+id/list_my_apps"
         android:background="@android:color/white"
         android:padding="1dp"
         android:dividerHeight="1dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
     </ListView>
 
-</LinearLayout>
+</RelativeLayout>

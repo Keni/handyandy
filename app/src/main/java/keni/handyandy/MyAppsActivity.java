@@ -3,8 +3,8 @@ package keni.handyandy;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,9 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AllAppsActivity extends AppCompatActivity implements ListView.OnItemClickListener
+public class MyAppsActivity extends AppCompatActivity implements ListView.OnItemClickListener
 {
-    private ListView list_apps;
+    private ListView list_my_apps;
 
     private String JSON_STRING;
 
@@ -31,17 +31,16 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_apps);
+        setContentView(R.layout.activity_my_apps);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.allapps);
+        toolbar.setTitle(R.string.myapps);
         setSupportActionBar(toolbar);
 
-        list_apps = (ListView) findViewById(R.id.list_apps);
-        list_apps.setOnItemClickListener(this);
+        list_my_apps = (ListView) findViewById(R.id.list_my_apps);
+        list_my_apps.setOnItemClickListener(this);
 
         getJSON();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -55,10 +54,10 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
     {
         int id = item.getItemId();
 
-        if (id == R.id.action_myapps)
+        if (id == R.id.action_allapps)
         {
-            Intent myapps = new Intent(this, MyAppsActivity.class);
-            startActivity(myapps);
+            Intent allapps = new Intent(this, AllAppsActivity.class);
+            startActivity(allapps);
             return true;
         }
 
@@ -97,11 +96,11 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
         }
 
         ListAdapter adapter = new SimpleAdapter(
-                AllAppsActivity.this, list, R.layout.list_all_apps,
+                MyAppsActivity.this, list, R.layout.list_my_apps,
                 new String[]{Config.TAG_APP_CATEGORY, Config.TAG_APP_CLIENTADDRESS, Config.TAG_APP_DATE},
-                new int[]{R.id.textViewCategory, R.id.textViewClientAddress, R.id.textViewDate});
+                new int[]{R.id.textViewCategoryMyApp, R.id.textViewClientAddressMyApp, R.id.textViewDateMyApp});
 
-        list_apps.setAdapter(adapter);
+        list_my_apps.setAdapter(adapter);
     }
 
     private void getJSON()
@@ -114,7 +113,7 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
             protected void onPreExecute()
             {
                 super.onPreExecute();
-                loading = ProgressDialog.show(AllAppsActivity.this, "Загрузка данных", "Подождите...", false, false);
+                loading = ProgressDialog.show(MyAppsActivity.this, "Загрузка данных", "Подождите...", false, false);
             }
 
             @Override
@@ -130,7 +129,7 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
             protected String doInBackground(Void... params)
             {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(Config.URL_GET_ALL_APPS);
+                String s = rh.sendGetRequestParam(Config.URL_GET_MY_APPS, Config.ENGINEER);
                 return s;
             }
         }
@@ -141,11 +140,11 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        Intent app = new Intent(this, ViewAppActivity.class);
+        Intent myapp = new Intent(this, ViewMyAppActivity.class);
         HashMap<String, String> map = (HashMap)parent.getItemAtPosition(position);
         String addId = map.get(Config.TAG_APP_ID).toString();
 
-        app.putExtra(Config.APP_ID, addId);
-        startActivity(app);
+        myapp.putExtra(Config.APP_ID, addId);
+        startActivity(myapp);
     }
 }

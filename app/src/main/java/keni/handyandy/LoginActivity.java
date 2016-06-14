@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     {
         Intent profile = new Intent(this, AllAppsActivity.class);
         profile.putExtra(KEY_USERNAME, username);
+        Config.ENGINEER = username;
         startActivity(profile);
     }
 

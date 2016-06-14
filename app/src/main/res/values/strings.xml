@@ -3,4 +3,10 @@
     <string name="username">Логин</string>
     <string name="password">Пароль</string>
     <string name="entry">Вход</string>
+    <string name="client_address">Адрес клиента</string>
+    <string name="date">Дата</string>
+    <string name="category">Вид работы</string>
+    <string name="menu">Меню</string>
+    <string name="myapps">Мои Заявки</string>
+    <string name="allapps">Не распредленные заявки</string>
 </resources>
