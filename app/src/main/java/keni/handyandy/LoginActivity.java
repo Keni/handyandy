@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         toolbar.setTitle(R.string.auth);
         setSupportActionBar(toolbar);
 
-        editTextUserName = (AutoCompleteTextView) findViewById(R.id.username);
+        editTextUserName = (EditText) findViewById(R.id.username);
         editTextPassword = (EditText) findViewById(R.id.password);
 
         buttonLogin = (Button) findViewById(R.id.buttonLogin);

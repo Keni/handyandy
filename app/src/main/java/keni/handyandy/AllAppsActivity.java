@@ -36,6 +36,7 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
         toolbar.setTitle(R.string.allapps);
         setSupportActionBar(toolbar);
 
+
         list_apps = (ListView) findViewById(R.id.list_apps);
         list_apps.setOnItemClickListener(this);
 

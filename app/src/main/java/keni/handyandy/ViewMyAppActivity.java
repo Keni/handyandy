@@ -183,7 +183,7 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
 
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_36dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()
         {
             @Override

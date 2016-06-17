@@ -2,8 +2,11 @@
     <string name="app_name">HandyAndy</string>
     <string name="username">Логин</string>
     <string name="password">Пароль</string>
-    <string name="entry">Вход</string>
+    <string name="entry">Войти</string>
     <string name="client_address">Адрес клиента</string>
+    <string name="client_name">Имя клиента</string>
+    <string name="client_phone">Телефон</string>
+    <string name="address">Адрес</string>
     <string name="date">Дата</string>
     <string name="category">Вид работы</string>
     <string name="menu">Меню</string>
@@ -12,4 +15,5 @@
     <string name="cat">Категория</string>
     <string name="auth">Авторизация</string>
     <string name="app">Заявка</string>
+    <string name="discription">Описание</string>
 </resources>

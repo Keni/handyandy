@@ -3,9 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="keni.handyandy.ViewAppActivity">
 
-    <include layout="@layout/toolbar" />
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:background="@color/primary_material_light"
+        style="@style/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,13 +22,15 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:layout_below="@id/toolbar"
-        android:id="@+id/scrollView">
+
+        android:id="@+id/scrollView"
+        android:fillViewport="false">
 
 
         <GridLayout
             android:orientation="vertical"
-            android:rowCount="6"
-            android:columnCount="37"
+            android:rowCount="7"
+            android:columnCount="2"
             android:columnOrderPreserved="false"
             android:clickable="false"
             android:layout_width="match_parent"
@@ -29,67 +38,111 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
                 android:text="@string/cat"
                 android:id="@+id/textViewCategoryView"
                 android:layout_row="1"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Category"
+                android:layout_width="191dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="0dp"
                 android:id="@+id/textViewCategory"
                 android:layout_row="1"
-                android:layout_column="36" />
+                android:layout_column="1"
+                android:textColor="@color/abc_primary_text_material_light" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:text="ClientName"
-                android:id="@+id/textViewClientName"
+                android:text="@string/discription"
+                android:id="@+id/textViewDescriptionView"
                 android:layout_row="2"
-                android:layout_column="36" />
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Description"
+                android:layout_marginTop="0dp"
                 android:id="@+id/textViewDescription"
                 android:layout_row="2"
-                android:layout_column="36" />
+                android:layout_column="1"
+                android:layout_marginBottom="100dp"
+                android:textColor="@color/abc_primary_text_material_light" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="ClientAddress"
-                android:id="@+id/textViewClientAddress"
+                android:text="@string/client_name"
+                android:id="@+id/textViewClientNameView"
                 android:layout_row="3"
-                android:layout_column="36" />
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light"
+                android:layout_marginBottom="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="ClientPhone"
-                android:id="@+id/textViewClientPhone"
+                android:id="@+id/textViewClientName"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:id="@+id/textViewClientAddressView"
                 android:layout_row="4"
-                android:layout_column="36" />
+                android:layout_column="0"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:text="Date"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textViewClientAddress"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/client_phone"
+                android:id="@+id/textViewClientPhoneView"
+                android:layout_row="5"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textViewClientPhone"
+                android:layout_row="5"
+                android:layout_column="1"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
                 android:id="@+id/textViewDate"
                 android:layout_gravity="end"
-                android:layout_row="5"
-                android:layout_column="36" />
+                android:layout_row="6"
+                android:layout_column="1"
+                android:textColor="@color/abc_primary_text_material_light" />
 
         </GridLayout>
     </ScrollView>
@@ -97,9 +150,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Принять заявку"
         android:id="@+id/buttonUpdateSelectApp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#607d8b"
+        android:layout_marginBottom="16dp"
+        android:textStyle="normal" />
 
 </RelativeLayout>
