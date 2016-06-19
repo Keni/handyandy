@@ -6,6 +6,7 @@
     <string name="client_address">Адрес клиента</string>
     <string name="client_name">Имя клиента</string>
     <string name="client_phone">Телефон</string>
+    <string name="dateAndTime">Дата и время</string>
     <string name="address">Адрес</string>
     <string name="date">Дата</string>
     <string name="category">Вид работы</string>

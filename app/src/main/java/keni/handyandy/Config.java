@@ -5,6 +5,8 @@ package keni.handyandy;
  */
 public class Config
 {
+    public static final String LOGIN_URL = "http://woworion.com/handyandy/login.php";
+    public static final String URL_GET_ENGINEER = "http://woworion.com/handyandy/getEngineer.php?username=";
     public static final String URL_GET_ALL_APPS = "http://woworion.com/handyandy/getAllApps.php";
     public static final String URL_GET_MY_APPS = "http://woworion.com/handyandy/getMyApps.php?engineer=";
     public static final String URL_GET_APP = "http://woworion.com/handyandy/getApp.php?id=";
@@ -21,11 +23,13 @@ public class Config
     public static final String TAG_APP_DESCRIPTION = "description";
     public static final String TAG_APP_CATEGORY = "category";
     public static final String TAG_APP_CLIENTNAME = "client_name";
-    public static final String TAG_APP_CLIENTADDRESS = "client_address";
+    public static String TAG_APP_CLIENTADDRESS = "client_address";
     public static final String TAG_APP_CLIENTPHONE = "client_phone";
     public static final String TAG_APP_DATE = "date";
 
     public static final String APP_ID = "app_id";
     public static String ENGINEER = "engineer";
+    public static String ENGINEER_BALANCE = "balance";
+    public static String ENGINEER_FULL_NAME = "full_name";
 
 }

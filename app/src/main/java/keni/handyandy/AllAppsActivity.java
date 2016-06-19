@@ -1,9 +1,9 @@
 package keni.handyandy;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,11 +21,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AllAppsActivity extends AppCompatActivity implements ListView.OnItemClickListener
-{
+public class AllAppsActivity extends AppCompatActivity implements ListView.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     private ListView list_apps;
 
     private String JSON_STRING;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,13 +37,30 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
         toolbar.setTitle(R.string.allapps);
         setSupportActionBar(toolbar);
 
+        System.out.println(Config.ENGINEER_BALANCE);
 
         list_apps = (ListView) findViewById(R.id.list_apps);
         list_apps.setOnItemClickListener(this);
 
-        getJSON();
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        swipeRefreshLayout.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                swipeRefreshLayout.setRefreshing(true);
+                getJSON();
+            }
+        });
     }
 
+    @Override
+    public void onRefresh()
+    {
+        getJSON();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -81,8 +99,15 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
                 JSONObject jo = result.getJSONObject(i);
                 String id = jo.getString(Config.TAG_APP_ID);
                 String category = jo.getString(Config.TAG_APP_CATEGORY);
-                String client_address = jo.getString(Config.TAG_APP_CLIENTADDRESS);
+                String client_address = jo.getString(Config.TAG_APP_CLIENTADDRESS);;
                 String date = jo.getString(Config.TAG_APP_DATE);
+
+/**                System.out.println(Config.ENGINEER_BALANCE);
+                if (Integer.parseInt(Config.ENGINEER_BALANCE) <= 0)
+                    client_address = "<Скрыто>";
+                else
+                    client_address = jo.getString(Config.TAG_APP_CLIENTADDRESS);
+*/
 
                 HashMap<String, String> apps = new HashMap<>();
                 apps.put(Config.TAG_APP_ID, id);
@@ -103,26 +128,31 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
                 new int[]{R.id.textViewCategory, R.id.textViewClientAddress, R.id.textViewDate});
 
         list_apps.setAdapter(adapter);
+
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void getJSON()
     {
+        swipeRefreshLayout.setRefreshing(true);
+
         class GetJSON extends AsyncTask<Void, Void, String>
         {
-            ProgressDialog loading;
+            //Поставил swipeRefreshLayout отключил ProgressDialog, чтобы не дублировалась загрузка
+            //ProgressDialog loading;
 
             @Override
             protected void onPreExecute()
             {
                 super.onPreExecute();
-                loading = ProgressDialog.show(AllAppsActivity.this, "Загрузка данных", "Подождите...", false, false);
+                //loading = ProgressDialog.show(AllAppsActivity.this, "Загрузка данных", "Подождите...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s)
             {
                 super.onPostExecute(s);
-                loading.dismiss();
+                //loading.dismiss();
                 JSON_STRING = s;
                 showApps();
             }
@@ -147,6 +177,8 @@ public class AllAppsActivity extends AppCompatActivity implements ListView.OnIte
         String addId = map.get(Config.TAG_APP_ID).toString();
 
         app.putExtra(Config.APP_ID, addId);
+        onPause();
         startActivity(app);
     }
+
 }

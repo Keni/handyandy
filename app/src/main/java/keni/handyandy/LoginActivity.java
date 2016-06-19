@@ -1,11 +1,12 @@
 package keni.handyandy;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,13 +19,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener
 {
-    public static final String LOGIN_URL = "http://192.168.1.10/handyandy/login.php";
-
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
 
@@ -32,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editTextPassword;
     private Button buttonLogin;
 
-    private String username;
+    private String username, balance;
     private String password;
 
     @Override
@@ -57,13 +60,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         username = editTextUserName.getText().toString().trim();
         password = editTextPassword.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL, new Response.Listener<String>()
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.LOGIN_URL, new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response)
             {
                 if (response.trim().contains("success"))
                 {
+                    getProfile();
                     openProfile();
                 }
                 else
@@ -107,6 +111,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view)
     {
         userLogin();
+    }
+
+    private void getProfile()
+    {
+        class GetProfile extends AsyncTask<Void, Void, String>
+        {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+                loading = ProgressDialog.show(LoginActivity.this, "Загрузка...", "Ждите...", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                loading.dismiss();
+                loadingEngineer(s);
+            }
+
+            @Override
+            protected String doInBackground(Void... params)
+            {
+                RequestHandler rh = new RequestHandler();
+                String s = rh.sendGetRequestParam(Config.URL_GET_ENGINEER, username);
+                System.out.println(s);
+                return s;
+            }
+        }
+        GetProfile gp = new GetProfile();
+        gp.execute();
+    }
+
+    private void loadingEngineer(String json)
+    {
+        try
+        {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+            JSONObject c = result.getJSONObject(0);
+
+            //Config.ENGINEER_FULL_NAME = c.getString(Config.ENGINEER_FULL_NAME);
+            //Config.ENGINEER_BALANCE = c.getString(C);
+            System.out.println(c.getString(balance));
+            System.out.println(c.getString(Config.ENGINEER_FULL_NAME));
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

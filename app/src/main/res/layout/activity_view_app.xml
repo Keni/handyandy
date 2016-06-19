@@ -22,15 +22,15 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:layout_below="@id/toolbar"
-
+        android:layout_marginBottom="20dp"
         android:id="@+id/scrollView"
         android:fillViewport="false">
 
 
         <GridLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:rowCount="7"
-            android:columnCount="2"
+            android:columnCount="3"
             android:columnOrderPreserved="false"
             android:clickable="false"
             android:layout_width="match_parent"
@@ -47,12 +47,14 @@
                 android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
-                android:layout_width="191dp"
+                android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="0dp"
                 android:id="@+id/textViewCategory"
+                android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="1"
                 android:layout_column="1"
+                android:layout_columnSpan="2"
                 android:textColor="@color/abc_primary_text_material_light" />
 
             <TextView
@@ -65,12 +67,14 @@
                 android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:id="@+id/textViewDescription"
+                android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="2"
                 android:layout_column="1"
+                android:layout_columnSpan="2"
                 android:layout_marginBottom="100dp"
                 android:textColor="@color/abc_primary_text_material_light" />
 
@@ -104,12 +108,14 @@
                 android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:id="@+id/textViewClientAddress"
+                android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="4"
                 android:layout_column="1"
+                android:layout_columnSpan="2"
                 android:layout_marginBottom="25dp"
                 android:textColor="@color/abc_primary_text_material_light" />
 
@@ -124,12 +130,14 @@
                 android:layout_marginBottom="5dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|bottom"
                 android:layout_marginTop="0dp"
                 android:id="@+id/textViewClientPhone"
                 android:layout_row="5"
                 android:layout_column="1"
+                android:layout_columnSpan="2"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/abc_primary_text_material_light" />
 
@@ -137,11 +145,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="25dp"
+                android:text="@string/dateAndTime"
+                android:id="@+id/textViewDateView"
+                android:layout_row="6"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:id="@+id/textViewDate"
-                android:layout_gravity="end"
+                android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="6"
                 android:layout_column="1"
+                android:layout_columnSpan="2"
                 android:textColor="@color/abc_primary_text_material_light" />
 
         </GridLayout>
