@@ -7,6 +7,7 @@
     <string name="client_name">Имя клиента</string>
     <string name="client_phone">Телефон</string>
     <string name="dateAndTime">Дата и время</string>
+    <string name="cost">Стоимость</string>
     <string name="address">Адрес</string>
     <string name="date">Дата</string>
     <string name="category">Вид работы</string>
@@ -16,5 +17,12 @@
     <string name="cat">Категория</string>
     <string name="auth">Авторизация</string>
     <string name="app">Заявка</string>
+    <string name="apps">Заявки</string>
     <string name="discription">Описание</string>
+    <string name="navigtaion_drawer_icon">Иконка инженера</string>
+    <string name="navigation_drawer_open">Открыть меню</string>
+    <string name="navigation_drawer_close">Закрыть меню</string>
+    <string name="close_app">Закрыть заявку</string>
+    <string name="money">Сумма</string>
+    <string name="accept_app">Принять заявку</string>
 </resources>

@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="?android:selectableItemBackground">
+    android:background="?android:selectableItemBackground"
+    android:longClickable="false">
 
     <ImageView
         android:layout_width="25dp"
@@ -69,6 +70,26 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:contentDescription="@string/date" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewMoney"
+        android:background="@drawable/ic_monetization_on_black_24dp"
+        android:layout_below="@+id/imageViewDate"
+        android:layout_toLeftOf="@+id/textViewDate"
+        android:layout_toStartOf="@+id/textViewDate"
+        android:contentDescription="@string/money" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewMoney"
+        android:layout_alignBottom="@+id/imageViewMoney"
+        android:layout_alignLeft="@+id/textViewDate"
+        android:layout_alignStart="@+id/textViewDate"
+        android:textColor="@color/abc_primary_text_material_light"
+        android:textSize="@dimen/abc_text_size_medium_material" />
 
 
 </RelativeLayout>

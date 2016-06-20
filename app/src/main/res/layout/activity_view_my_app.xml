@@ -14,74 +14,175 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:layout_below="@id/toolbar"
-        android:id="@+id/scrollViewMyApp">
+        android:id="@+id/scrollViewMyApp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
-        <LinearLayout
-            android:orientation="vertical"
+        <GridLayout
+            android:orientation="horizontal"
+            android:rowCount="9"
+            android:columnCount="4"
+            android:columnOrderPreserved="false"
+            android:clickable="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewTitleMyApp" />
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/textViewCategoryMyApp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/textViewDescriptionMyApp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:id="@+id/textViewClientNameMyApp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/textViewClientAddressMyApp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/textViewClientPhoneMyApp" />
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="@string/cat"
+                android:id="@+id/textViewCategoryMyApp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:id="@+id/editTextComment"
+                android:layout_width="179dp"
+                android:layout_height="40dp"
+                android:id="@+id/editText2"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_marginTop="0dp"
                 android:inputType="text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:id="@+id/textViewDateMyApp"
-                android:layout_gravity="end" />
+                android:text="@string/discription"
+                android:id="@+id/textViewDescriptionMyApp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView7"
+                android:layout_gravity="fill_horizontal|bottom"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:layout_marginBottom="100dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/client_name"
+                android:id="@+id/textViewClientNameMyApp"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:id="@+id/textViewClientAddressMyApp"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/abc_secondary_text_material_light" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView11"
+                android:layout_gravity="fill_horizontal|bottom"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/client_phone"
+                android:id="@+id/textViewClientPhoneMyApp"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|bottom"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView13"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/abc_primary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/dateAndTime"
+                android:id="@+id/textViewDateMyApp"
+                android:layout_row="5"
+                android:layout_column="0"
+                android:textColor="@color/abc_secondary_text_material_light" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cost"
+                android:id="@+id/textView15"
+                android:layout_row="6"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView16"
+                android:layout_gravity="fill_horizontal|bottom"
+                android:layout_row="5"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:textColor="@color/abc_primary_text_material_light"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:layout_row="6"
+                android:layout_column="2"
+                android:inputType="text" />
+        </GridLayout>
     </ScrollView>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/close_app"
         android:id="@+id/buttonUpdateFinishApp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:background="#607d8b"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp" />
 
 </RelativeLayout>

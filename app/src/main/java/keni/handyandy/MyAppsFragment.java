@@ -3,12 +3,10 @@ package keni.handyandy;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -21,47 +19,33 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MyAppsActivity extends AppCompatActivity implements ListView.OnItemClickListener
+import keni.handyandy.Config.Config;
+import keni.handyandy.Config.RequestHandler;
+
+/**
+ * Created by Keni on 20.06.2016.
+ */
+public class MyAppsFragment extends android.support.v4.app.Fragment implements ListView.OnItemClickListener
 {
     private ListView list_my_apps;
 
     private String JSON_STRING;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_apps);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.myapps);
-        setSupportActionBar(toolbar);
+        return inflater.inflate(R.layout.activity_my_apps, null);
+    }
 
-        list_my_apps = (ListView) findViewById(R.id.list_my_apps);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        list_my_apps = (ListView) getActivity().findViewById(R.id.list_apps);
         list_my_apps.setOnItemClickListener(this);
 
         getJSON();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int id = item.getItemId();
-
-        if (id == R.id.action_allapps)
-        {
-            Intent allapps = new Intent(this, AllAppsActivity.class);
-            startActivity(allapps);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void showApps()
@@ -96,7 +80,7 @@ public class MyAppsActivity extends AppCompatActivity implements ListView.OnItem
         }
 
         ListAdapter adapter = new SimpleAdapter(
-                MyAppsActivity.this, list, R.layout.list_my_apps,
+                getActivity(), list, R.layout.list_my_apps,
                 new String[]{Config.TAG_APP_CATEGORY, Config.TAG_APP_CLIENTADDRESS, Config.TAG_APP_DATE},
                 new int[]{R.id.textViewCategoryMyApp, R.id.textViewClientAddressMyApp, R.id.textViewDateMyApp});
 
@@ -113,7 +97,7 @@ public class MyAppsActivity extends AppCompatActivity implements ListView.OnItem
             protected void onPreExecute()
             {
                 super.onPreExecute();
-                loading = ProgressDialog.show(MyAppsActivity.this, "Загрузка данных", "Подождите...", false, false);
+                loading = ProgressDialog.show(getActivity(), "Загрузка данных", "Подождите...", false, false);
             }
 
             @Override
@@ -140,7 +124,7 @@ public class MyAppsActivity extends AppCompatActivity implements ListView.OnItem
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        Intent myapp = new Intent(this, ViewMyAppActivity.class);
+        Intent myapp = new Intent(getActivity(), ViewMyAppActivity.class);
         HashMap<String, String> map = (HashMap)parent.getItemAtPosition(position);
         String addId = map.get(Config.TAG_APP_ID).toString();
 

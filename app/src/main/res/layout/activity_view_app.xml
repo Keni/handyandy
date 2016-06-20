@@ -22,15 +22,14 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:layout_below="@id/toolbar"
-        android:layout_marginBottom="20dp"
         android:id="@+id/scrollView"
         android:fillViewport="false">
 
 
         <GridLayout
             android:orientation="horizontal"
-            android:rowCount="7"
-            android:columnCount="3"
+            android:rowCount="9"
+            android:columnCount="4"
             android:columnOrderPreserved="false"
             android:clickable="false"
             android:layout_width="match_parent"
@@ -53,7 +52,7 @@
                 android:id="@+id/textViewCategory"
                 android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="1"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_columnSpan="2"
                 android:textColor="@color/abc_primary_text_material_light" />
 
@@ -73,7 +72,7 @@
                 android:id="@+id/textViewDescription"
                 android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="2"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_columnSpan="2"
                 android:layout_marginBottom="100dp"
                 android:textColor="@color/abc_primary_text_material_light" />
@@ -93,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewClientName"
                 android:layout_row="3"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/abc_primary_text_material_light" />
 
@@ -114,7 +113,7 @@
                 android:id="@+id/textViewClientAddress"
                 android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="4"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_columnSpan="2"
                 android:layout_marginBottom="25dp"
                 android:textColor="@color/abc_primary_text_material_light" />
@@ -136,7 +135,7 @@
                 android:layout_marginTop="0dp"
                 android:id="@+id/textViewClientPhone"
                 android:layout_row="5"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_columnSpan="2"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/abc_primary_text_material_light" />
@@ -152,15 +151,32 @@
                 android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cost"
+                android:id="@+id/textView3"
+                android:layout_row="7"
+                android:layout_column="0" />
+
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:id="@+id/textViewDate"
                 android:layout_gravity="fill_horizontal|bottom"
                 android:layout_row="6"
-                android:layout_column="1"
+                android:layout_column="2"
                 android:layout_columnSpan="2"
-                android:textColor="@color/abc_primary_text_material_light" />
+                android:textColor="@color/abc_primary_text_material_light"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                android:layout_row="7"
+                android:layout_column="3"
+                android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
         </GridLayout>
     </ScrollView>
@@ -168,7 +184,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Принять заявку"
+        android:text="@string/accept_app"
         android:id="@+id/buttonUpdateSelectApp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

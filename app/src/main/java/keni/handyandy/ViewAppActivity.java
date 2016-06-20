@@ -17,6 +17,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import keni.handyandy.Config.Config;
+import keni.handyandy.Config.RequestHandler;
+
 public class ViewAppActivity extends AppCompatActivity implements View.OnClickListener
 {
     private TextView textViewCategory;
@@ -98,9 +101,19 @@ public class ViewAppActivity extends AppCompatActivity implements View.OnClickLi
             String description = c.getString(Config.TAG_APP_DESCRIPTION);
             String category = c.getString(Config.TAG_APP_CATEGORY);
             String client_name = c.getString(Config.TAG_APP_CLIENTNAME);
-            String client_address = c.getString(Config.TAG_APP_CLIENTADDRESS);
-            String client_phone = c.getString(Config.TAG_APP_CLIENTPHONE);
+            String client_address;
+            String client_phone;
             String date = c.getString(Config.TAG_APP_DATE);
+
+            if (Integer.parseInt(Config.KEY_ENGINEER_BALANCE) <= 0) {
+                client_address = "<Скрыто>";
+                client_phone = "<Скрыто>";
+                buttonUpdateSelectApp.setEnabled(false);
+            }
+            else {
+                client_address = c.getString(Config.TAG_APP_CLIENTADDRESS);
+                client_phone = c.getString(Config.TAG_APP_CLIENTPHONE);
+            }
 
             textViewDescription.setText(description);
             textViewCategory.setText(category);

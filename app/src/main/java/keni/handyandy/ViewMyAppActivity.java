@@ -18,9 +18,11 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import keni.handyandy.Config.Config;
+import keni.handyandy.Config.RequestHandler;
+
 public class ViewMyAppActivity extends AppCompatActivity implements View.OnClickListener
 {
-    private TextView textViewTitleMyApp;
     private TextView textViewCategoryMyApp;
     private TextView textViewDescriptionMyApp;
     private TextView textViewClientNameMyApp;
@@ -46,15 +48,12 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         id = intent.getStringExtra(Config.APP_ID);
 
-        textViewTitleMyApp = (TextView) findViewById(R.id.textViewTitleMyApp);
         textViewCategoryMyApp = (TextView) findViewById(R.id.textViewCategoryMyApp);
         textViewDescriptionMyApp = (TextView) findViewById(R.id.textViewDescriptionMyApp);
         textViewClientNameMyApp = (TextView) findViewById(R.id.textViewClientNameMyApp);
         textViewClientAddressMyApp = (TextView) findViewById(R.id.textViewClientAddressMyApp);
         textViewClientPhoneMyApp = (TextView) findViewById(R.id.textViewClientPhoneMyApp);
         textViewDateMyApp = (TextView) findViewById(R.id.textViewDateMyApp);
-
-        editTextComment = (EditText) findViewById(R.id.editTextComment);
 
         buttonUpdateFinishApp = (Button) findViewById(R.id.buttonUpdateFinishApp);
         buttonUpdateFinishApp.setOnClickListener(this);
@@ -102,7 +101,6 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
 
-            String title = c.getString(Config.TAG_APP_TITLE);
             String description = c.getString(Config.TAG_APP_DESCRIPTION);
             String category = c.getString(Config.TAG_APP_CATEGORY);
             String client_name = c.getString(Config.TAG_APP_CLIENTNAME);
@@ -110,7 +108,6 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
             String client_phone = c.getString(Config.TAG_APP_CLIENTPHONE);
             String date = c.getString(Config.TAG_APP_DATE);
 
-            textViewTitleMyApp.setText(title);
             textViewDescriptionMyApp.setText(description);
             textViewCategoryMyApp.setText(category);
             textViewClientNameMyApp.setText(client_name);
@@ -172,7 +169,7 @@ public class ViewMyAppActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view)
     {
         updateFinishApp();
-        Intent back = new Intent(ViewMyAppActivity.this, MyAppsActivity.class);
+        Intent back = new Intent(ViewMyAppActivity.this, MyAppsFragment.class);
         startActivity(back);
     }
 

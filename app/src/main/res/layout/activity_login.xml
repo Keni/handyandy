@@ -26,28 +26,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
 
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <EditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:hint="@string/password"
-                    android:layout_marginTop="10dp"
-                    android:imeActionId="@+id/username"
-                    android:imeActionLabel="Sign"
+                    android:imeActionId="@+id/login"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:imeActionLabel="@string/password"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
-                    android:id="@+id/password"
                     android:maxLines="1"
                     android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:layout_width="match_parent"

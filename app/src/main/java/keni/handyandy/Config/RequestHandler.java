@@ -1,4 +1,4 @@
-package keni.handyandy;
+package keni.handyandy.Config;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

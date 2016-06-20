@@ -26,6 +26,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import keni.handyandy.Config.Config;
+import keni.handyandy.Config.RequestHandler;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener
 {
     public static final String KEY_USERNAME = "username";
@@ -139,7 +142,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             {
                 RequestHandler rh = new RequestHandler();
                 String s = rh.sendGetRequestParam(Config.URL_GET_ENGINEER, username);
-                System.out.println(s);
                 return s;
             }
         }
@@ -155,10 +157,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
 
-            //Config.ENGINEER_FULL_NAME = c.getString(Config.ENGINEER_FULL_NAME);
-            //Config.ENGINEER_BALANCE = c.getString(C);
-            System.out.println(c.getString(balance));
-            System.out.println(c.getString(Config.ENGINEER_FULL_NAME));
+            String balance = c.getString(Config.TAG_ENGINEER_BALANCE);
+            String full_name = c.getString(Config.TAG_ENGINEER_FULL_NAME);
+
+            Config.KEY_ENGINEER_BALANCE = balance;
+            Config.KEY_ENGINEER_FULL_NAME = full_name;
         }
         catch (JSONException e)
         {

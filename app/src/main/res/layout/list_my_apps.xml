@@ -70,5 +70,25 @@
         android:layout_alignParentStart="true"
         android:contentDescription="@string/date" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewMoneyMyApp"
+        android:background="@drawable/ic_monetization_on_black_24dp"
+        android:layout_below="@+id/imageViewDateMyApp"
+        android:layout_toLeftOf="@+id/textViewCategoryMyApp"
+        android:layout_toStartOf="@+id/textViewCategoryMyApp"
+        android:contentDescription="@string/money" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewMoneyMyApp"
+        android:textColor="@color/abc_primary_text_material_light"
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:layout_alignBottom="@+id/imageViewMoneyMyApp"
+        android:layout_alignLeft="@+id/textViewClientAddressMyApp"
+        android:layout_alignStart="@+id/textViewClientAddressMyApp" />
+
 
 </RelativeLayout>
